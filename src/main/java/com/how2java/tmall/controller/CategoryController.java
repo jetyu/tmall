@@ -66,7 +66,6 @@ public class CategoryController {
         page.setTotal(total);
         model.addAttribute("categoryList", categoryList);
         model.addAttribute("page", page);
-
         // 获取图片文件夹路径，通过session获取ServletContext,再通过getRealPath定位存放分类图片的路径。
         File imageFoldPath = new File(session.getServletContext().getRealPath("img/category"));
         // 删除macOS系统上DS_Store文件 防止统计出错
@@ -206,14 +205,10 @@ public class CategoryController {
         // 根据id创建文件名
         File imageFile = new File(imageFoldPath, category.getId() + ".jpg");
         logger.info("准备要更新的图片为：" + imageFile.toString());
-        // 删除当前图片，可以防止缓存问题发生
+
         try {
-            // 检查删除的状态，如果删除成功返回true
-            boolean deleteCheckFlag = imageFile.delete();
-            // 如果返回时true的话，才执行传图片操作
-            if (deleteCheckFlag == true) {
-                uploadedImageFile.getImage().transferTo(imageFile);
-            }
+            uploadedImageFile.getImage().transferTo(imageFile);
+
         } catch (Exception e) {
             logger.error("Update image file has occurred error!", e);
         }
