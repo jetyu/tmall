@@ -55,4 +55,58 @@ public class CategoryServiceImpl implements CategoryService {
         return categoryMapper.total();
     }
 
+    /**
+     * @Title: insertCategory
+     * @Description: TODO(增加category)
+     * @Author Jet Yu
+     * @Date 2020-04-14
+     * @param category
+     * @see com.how2java.tmall.service.CategoryService#insertCategory(com.how2java.tmall.pojo.Category)
+     */
+    @Override
+    public void insertCategory(Category category) {
+        categoryMapper.insertCategory(category);
+    }
+
+    /**
+     * @Title: deleteCategory
+     * @Description: TODO(删除category)
+     * @Author Jet Yu
+     * @Date 2020-04-14
+     * @param id
+     * @see com.how2java.tmall.service.CategoryService#deleteCategory(int)
+     */
+    @Override
+    public void deleteCategory(int id) {
+        categoryMapper.deleteCategoryById(id);
+    }
+
+    /**
+     * @Title: getCategoryById
+     * @Description: TODO(通过id获取category名称，用于编辑功能)
+     * @Author Jet Yu
+     * @Date 2020-04-14
+     * @param id
+     * @return
+     * @see com.how2java.tmall.service.CategoryService#getCategoryById(int)
+     */
+    @Override
+    public Category getCategoryById(int id) {
+        return categoryMapper.getCategoryById(id);
+    }
+
+    /**
+     * @Title: updateCategory
+     * @Description: TODO(描述)
+     * @Author Jet Yu
+     * @Date 2020-04-14
+     * @param category
+     * @see com.how2java.tmall.service.CategoryService#updateCategory(com.how2java.tmall.pojo.Category)
+     */
+    @Override
+    public void updateCategory(Category category) {
+        categoryMapper.updateCategory(category);
+
+    }
+
 }

@@ -3,7 +3,7 @@ package com.how2java.tmall.pojo;
 /**
  * 
  * @Name: Category
- * @Description: TODO(描述)
+ * @Description: TODO(Category的DAO)
  * @Author Jet Yu
  * @Date 2020-04-13
  */

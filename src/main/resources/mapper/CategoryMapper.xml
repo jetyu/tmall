@@ -16,4 +16,20 @@
 		select count(*) from category
 	</select>
 	
+	<insert id="insertCategory"  keyProperty="id"  useGeneratedKeys="true" parameterType="Category" >
+        insert into category ( name ) values (#{name})
+    </insert>
+    
+    <delete id="deleteCategoryById">
+        delete from category where id= #{id}
+    </delete>
+    
+    <select id="getCategoryById" resultType="Category">
+        select * from category  where id= #{id}
+    </select>
+    
+    <update id="updateCategory" parameterType="Category" >
+        update category set name=#{name} where id=#{id}
+    </update>
+    
 </mapper>

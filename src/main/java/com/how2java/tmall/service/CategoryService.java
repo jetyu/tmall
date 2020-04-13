@@ -26,7 +26,7 @@ public interface CategoryService {
      * @Author Jet Yu
      * @Date 2020-04-13
      * @param page
-     * @return
+     * @return List<Category>
      */
     List<Category> listCategory(Page page);
 
@@ -39,4 +39,45 @@ public interface CategoryService {
      * @return
      */
     int total();
+
+    /**
+     * 增加category名称
+     *
+     * @Title: insertCategory
+     * @Author Jet Yu
+     * @Date 2020-04-14
+     * @param category
+     */
+    void insertCategory(Category category);
+
+    /**
+     * 删除category名称
+     *
+     * @Title: deleteCategory
+     * @Author Jet Yu
+     * @Date 2020-04-14
+     * @param id
+     */
+    void deleteCategory(int id);
+
+    /**
+     * 通过id获取1个category名称，用于编辑category名称
+     *
+     * @Title: getCategoryById
+     * @Author Jet Yu
+     * @Date 2020-04-14
+     * @param id
+     * @return Category
+     */
+    Category getCategoryById(int id);
+
+    /**
+     * 更新category名称
+     *
+     * @Title: updateCategory
+     * @Author Jet Yu
+     * @Date 2020-04-14
+     * @param category
+     */
+    void updateCategory(Category category);
 }
