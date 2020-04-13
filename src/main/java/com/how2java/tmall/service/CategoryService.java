@@ -23,20 +23,20 @@ public interface CategoryService {
      * 取category整个list
      *
      * @Title: listCategory
-     * @param page
-     * @return
      * @Author Jet Yu
      * @Date 2020-04-13
+     * @param page
+     * @return
      */
     List<Category> listCategory(Page page);
 
     /**
-     * 计算分页的时候整个数量的方法
+     * total
      *
      * @Title: total
-     * @return
      * @Author Jet Yu
      * @Date 2020-04-13
+     * @return
      */
     int total();
 }
