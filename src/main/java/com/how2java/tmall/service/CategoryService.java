@@ -19,6 +19,17 @@ import com.how2java.tmall.util.Page;
  */
 
 public interface CategoryService {
+
+    /**
+     * 获取所有category,采取pageHelper的方式
+     *
+     * @Title: listAllCategory
+     * @Author Jet Yu
+     * @Date 2020-04-14
+     * @return
+     */
+    List<Category> list();
+
     /**
      * 取category整个list
      *

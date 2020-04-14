@@ -6,30 +6,32 @@
 <mapper namespace="com.how2java.tmall.mapper.CategoryMapper">
 
 	<select id="listCategory" resultType="Category">
-		select * from category order by id desc
-		<if test="start!=null and count!=null">
-			limit #{start},#{count}
-		</if>
+		select * from category 	order by id desc
 	</select>
 
+	<select id="list" resultType="Category">
+        select * from   category order by id desc
+    </select>
+	
 	<select id="total" resultType="int">
 		select count(*) from category
 	</select>
-	
-	<insert id="insertCategory"  keyProperty="id"  useGeneratedKeys="true" parameterType="Category" >
-        insert into category ( name ) values (#{name})
-    </insert>
-    
-    <delete id="deleteCategoryById">
-        delete from category where id= #{id}
-    </delete>
-    
-    <select id="getCategoryById" resultType="Category">
-        select * from category  where id= #{id}
-    </select>
-    
-    <update id="updateCategory" parameterType="Category" >
-        update category set name=#{name} where id=#{id}
-    </update>
-    
+
+	<insert id="insertCategory" keyProperty="id"
+		useGeneratedKeys="true" parameterType="Category">
+		insert into category ( name ) values (#{name})
+	</insert>
+
+	<delete id="deleteCategoryById">
+		delete from category where id= #{id}
+	</delete>
+
+	<select id="getCategoryById" resultType="Category">
+		select * from category where id= #{id}
+	</select>
+
+	<update id="updateCategory" parameterType="Category">
+		update category set name=#{name} where id=#{id}
+	</update>
+
 </mapper>

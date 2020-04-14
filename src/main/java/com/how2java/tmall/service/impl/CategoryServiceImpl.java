@@ -109,4 +109,17 @@ public class CategoryServiceImpl implements CategoryService {
 
     }
 
+    /**
+     * @Title: listAllCategory
+     * @Description: TODO(使用pagehelper来list 目录的方法)
+     * @Author Jet Yu
+     * @Date 2020-04-14
+     * @return
+     * @see com.how2java.tmall.service.CategoryService#listAllCategory()
+     */
+    @Override
+    public List<Category> list() {
+        return categoryMapper.list();
+    }
+
 }

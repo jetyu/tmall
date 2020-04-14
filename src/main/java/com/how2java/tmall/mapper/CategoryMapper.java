@@ -12,6 +12,15 @@ import com.how2java.tmall.util.Page;
  * @Date 2020-04-13
  */
 public interface CategoryMapper {
+    /**
+     * 获取所有category,采取pageHelper的方式
+     *
+     * @Title: list
+     * @Author Jet Yu
+     * @Date 2020-04-14
+     * @return
+     */
+    List<Category> list();
 
     /**
      * 获取所有category
