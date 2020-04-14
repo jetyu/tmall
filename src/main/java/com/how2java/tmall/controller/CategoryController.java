@@ -178,18 +178,15 @@ public class CategoryController {
     }
 
     /**
-     * 
+     * 更新category
      *
      * @Title: updateCategory
      * @Author Jet Yu
      * @Date 2020-04-14
-     * @param category
-     *            参数 Category c接受页面提交的分类名称
+     * @param category接受页面提交的分类名称
      * @param model
-     * @param session
-     *            参数 session 用于在后续获取当前应用的路径
-     * @param uploadedImageFile
-     *            UploadedImageFile 用于接受上传的图片
+     * @param session参数用于在后续获取当前应用的路径
+     * @param uploadedImageFile用于接受上传的图片
      * @return
      * @throws IOException
      * @throws IllegalStateException
@@ -205,14 +202,12 @@ public class CategoryController {
         // 根据id创建文件名
         File imageFile = new File(imageFoldPath, category.getId() + ".jpg");
         logger.info("准备要更新的图片为：" + imageFile.toString());
-
+        // 上传图片功能
         try {
             uploadedImageFile.getImage().transferTo(imageFile);
-
         } catch (Exception e) {
             logger.error("Update image file has occurred error!", e);
         }
-
         model.addAttribute("category", category);
         // 客户端跳转到admin_category_list
         return "redirect:/admin_category_list";
