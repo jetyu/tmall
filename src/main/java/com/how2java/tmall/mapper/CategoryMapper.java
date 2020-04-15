@@ -1,86 +1,21 @@
 package com.how2java.tmall.mapper;
 
+import com.how2java.tmall.pojo.Category;
+import com.how2java.tmall.pojo.CategoryExample;
 import java.util.List;
 
-import com.how2java.tmall.pojo.Category;
-import com.how2java.tmall.util.Page;
-
-/**
- * @Name: CategoryMapper
- * @Description: TODO(Category接口 CRUD方法)
- * @Author Jet Yu
- * @Date 2020-04-13
- */
 public interface CategoryMapper {
-    /**
-     * 获取所有category,采取pageHelper的方式
-     *
-     * @Title: list
-     * @Author Jet Yu
-     * @Date 2020-04-14
-     * @return
-     */
-    List<Category> list();
+    int deleteByPrimaryKey(Integer id);
 
-    /**
-     * 获取所有category
-     *
-     * @Title: listCategory
-     * @Author Jet Yu
-     * @Date 2020-04-13
-     * @param page
-     * @return
-     */
-    List<Category> listCategory(Page page);
+    int insert(Category record);
 
-    /**
-     * total方法
-     * 
-     * @Title: total
-     * @Author Jet Yu
-     * @Date 2020-04-14
-     * @return
-     */
-    int total();
+    int insertSelective(Category record);
 
-    /**
-     * 增加category名称
-     *
-     * @Title: insertCategory
-     * @Author Jet Yu
-     * @Date 2020-04-14
-     * @param category
-     */
-    void insertCategory(Category category);
+    List<Category> selectByExample(CategoryExample example);
 
-    /**
-     * 删除category名称
-     *
-     * @Title: deleteCategory
-     * @Author Jet Yu
-     * @Date 2020-04-14
-     * @param id
-     */
-    void deleteCategoryById(int id);
+    Category selectByPrimaryKey(Integer id);
 
-    /**
-     * 通过id获取1个category名称，用于编辑category名称
-     *
-     * @Title: getCategoryById
-     * @Author Jet Yu
-     * @Date 2020-04-14
-     * @param id
-     * @return
-     */
-    Category getCategoryById(int id);
+    int updateByPrimaryKeySelective(Category record);
 
-    /**
-     * 更新category名称
-     *
-     * @Title: updateCategory
-     * @Author Jet Yu
-     * @Date 2020-04-14
-     * @param category
-     */
-    void updateCategory(Category category);
+    int updateByPrimaryKey(Category record);
 }

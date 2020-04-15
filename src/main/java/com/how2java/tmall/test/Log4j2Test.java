@@ -6,7 +6,7 @@ import org.apache.logging.log4j.Logger;
 /**
  * 
  * @Name: Log4j2Test
- * @Description: TODO(Log4j2的测试)
+ * @Description: Log4j2的测试类
  * @Author Jet Yu
  * @Date 2020-04-13
  */
@@ -18,15 +18,16 @@ public class Log4j2Test {
     public static void main(String[] args) {
 
         Log4j2Test logObj = new Log4j2Test();
-        logObj.name = "1.测试log4j2";
-        logger.debug("修改前的名字为：" + logObj.name);
-        logObj.name = "2.测试log4j2 ";
-        logger.trace("修改后的名字为：" + logObj.name);
-        logger.debug("修改后的名字为：" + logObj.name);
-        logger.info("修改后的名字为：" + logObj.name);
-        logger.warn("修改后的名字为：" + logObj.name);
-        logger.error("修改后的名字为：" + logObj.name);
-        logger.fatal("修改后的名字为：" + logObj.name);
+        logObj.name = "log4j2输出等级测试";
+        logger.info("当前log4j.xml配置输出的level为：" + logger.getLevel());
+
+        logger.debug("测试输出： " + logObj.name);
+        logger.trace("测试输出： " + logObj.name);
+        logger.debug("测试输出： " + logObj.name);
+        logger.info("测试输出： " + logObj.name);
+        logger.warn("测试输出： " + logObj.name);
+        logger.error("测试输出： " + logObj.name);
+        logger.fatal("测试输出： " + logObj.name);
 
     }
 

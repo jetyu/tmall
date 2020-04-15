@@ -1,6 +1,6 @@
 /**
  * @Title: CategoryServiceImpl.java
- * @Description: TODO(描述)
+ * @Description: CategoryServiceImpl(描述)
  * @Author Jet Yu
  * @Date 2020-04-13
  */
@@ -13,12 +13,12 @@ import org.springframework.stereotype.Service;
 
 import com.how2java.tmall.mapper.CategoryMapper;
 import com.how2java.tmall.pojo.Category;
+import com.how2java.tmall.pojo.CategoryExample;
 import com.how2java.tmall.service.CategoryService;
-import com.how2java.tmall.util.Page;
 
 /**
  * @Name: CategoryServiceImpl
- * @Description: TODO(描述)
+ * @Description: 分类的实现
  * @Author Jet Yu
  * @Date 2020-04-13
  */
@@ -29,35 +29,24 @@ public class CategoryServiceImpl implements CategoryService {
     CategoryMapper categoryMapper;
 
     /**
+     * 
      * @Title: listCategory
-     * @Description: TODO(描述)
-     * @param page
-     * @return
-     * @see com.how2java.tmall.service.CategoryService#listCategory(com.how2java.tmall.util.Page)
+     * @Description: 遍历整个分类
      * @Author Jet Yu
-     * @Date 2020-04-13
+     * @Date 2020-04-14
+     * @return
+     * @see com.how2java.tmall.service.CategoryService#listCategory()
      */
     @Override
-    public List<Category> listCategory(Page page) {
-        return categoryMapper.listCategory(page);
-    }
-
-    /**
-     * @Title: total
-     * @Description: TODO(描述)
-     * @return
-     * @see com.how2java.tmall.service.CategoryService#total()
-     * @Author Jet Yu
-     * @Date 2020-04-13
-     */
-    @Override
-    public int total() {
-        return categoryMapper.total();
+    public List<Category> listCategory() {
+        CategoryExample example = new CategoryExample();
+        example.setOrderByClause("id desc");
+        return categoryMapper.selectByExample(example);
     }
 
     /**
      * @Title: insertCategory
-     * @Description: TODO(增加category)
+     * @Description: 增加category)
      * @Author Jet Yu
      * @Date 2020-04-14
      * @param category
@@ -65,12 +54,12 @@ public class CategoryServiceImpl implements CategoryService {
      */
     @Override
     public void insertCategory(Category category) {
-        categoryMapper.insertCategory(category);
+        categoryMapper.insertSelective(category);
     }
 
     /**
      * @Title: deleteCategory
-     * @Description: TODO(删除category)
+     * @Description: 删除category)
      * @Author Jet Yu
      * @Date 2020-04-14
      * @param id
@@ -78,12 +67,12 @@ public class CategoryServiceImpl implements CategoryService {
      */
     @Override
     public void deleteCategory(int id) {
-        categoryMapper.deleteCategoryById(id);
+        categoryMapper.deleteByPrimaryKey(id);
     }
 
     /**
      * @Title: getCategoryById
-     * @Description: TODO(通过id获取category名称，用于编辑功能)
+     * @Description: 通过id获取category名称，用于编辑功能)
      * @Author Jet Yu
      * @Date 2020-04-14
      * @param id
@@ -92,12 +81,12 @@ public class CategoryServiceImpl implements CategoryService {
      */
     @Override
     public Category getCategoryById(int id) {
-        return categoryMapper.getCategoryById(id);
+        return categoryMapper.selectByPrimaryKey(id);
     }
 
     /**
      * @Title: updateCategory
-     * @Description: TODO(描述)
+     * @Description: 更新分类
      * @Author Jet Yu
      * @Date 2020-04-14
      * @param category
@@ -105,21 +94,8 @@ public class CategoryServiceImpl implements CategoryService {
      */
     @Override
     public void updateCategory(Category category) {
-        categoryMapper.updateCategory(category);
+        categoryMapper.updateByPrimaryKeySelective(category);
 
-    }
-
-    /**
-     * @Title: listAllCategory
-     * @Description: TODO(使用pagehelper来list 目录的方法)
-     * @Author Jet Yu
-     * @Date 2020-04-14
-     * @return
-     * @see com.how2java.tmall.service.CategoryService#listAllCategory()
-     */
-    @Override
-    public List<Category> list() {
-        return categoryMapper.list();
     }
 
 }

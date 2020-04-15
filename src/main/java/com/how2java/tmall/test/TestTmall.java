@@ -7,7 +7,7 @@ import java.sql.Statement;
 
 /**
  * @Name: TestTmall
- * @Description: TODO(生成category测试数据)
+ * @Description: 生成category测试数据
  * @Author Jet Yu
  * @Date 2020-04-13
  */
@@ -36,7 +36,7 @@ public class TestTmall {
             System.out.println("已经成功创建10条分类测试数据");
 
         } catch (SQLException e) {
-            // TODO Auto-generated catch block
+
             e.printStackTrace();
         }
 

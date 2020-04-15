@@ -1,6 +1,6 @@
 /**
  * @Title: CategoryService.java
- * @Description: TODO(描述)
+ * @Description: CategoryService
  * @Author Jet Yu
  * @Date 2020-04-13
  */
@@ -9,11 +9,10 @@ package com.how2java.tmall.service;
 import java.util.List;
 
 import com.how2java.tmall.pojo.Category;
-import com.how2java.tmall.util.Page;
 
 /**
  * @Name: CategoryService
- * @Description: TODO(Category的增删改查功能)
+ * @Description: Category的增删改查功能
  * @Author Jet Yu
  * @Date 2020-04-13
  */
@@ -28,28 +27,7 @@ public interface CategoryService {
      * @Date 2020-04-14
      * @return
      */
-    List<Category> list();
-
-    /**
-     * 取category整个list
-     *
-     * @Title: listCategory
-     * @Author Jet Yu
-     * @Date 2020-04-13
-     * @param page
-     * @return List<Category>
-     */
-    List<Category> listCategory(Page page);
-
-    /**
-     * total
-     *
-     * @Title: total
-     * @Author Jet Yu
-     * @Date 2020-04-13
-     * @return
-     */
-    int total();
+    List<Category> listCategory();
 
     /**
      * 增加category名称
@@ -91,4 +69,5 @@ public interface CategoryService {
      * @param category
      */
     void updateCategory(Category category);
+
 }

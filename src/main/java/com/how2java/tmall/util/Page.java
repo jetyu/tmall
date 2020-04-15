@@ -2,7 +2,7 @@ package com.how2java.tmall.util;
 
 /**
  * @Name: Page
- * @Description: TODO(Page页数)
+ * @Description:
  * @Author Jet Yu
  * @Date 2020-04-13
  */

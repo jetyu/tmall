@@ -1,6 +1,6 @@
 /**
  * @Title: CategoryController.java
- * @Description: TODO(描述)
+ * @Description:
  * @Author Jet Yu
  * @Date 2020-04-13
  */
@@ -27,9 +27,8 @@ import com.how2java.tmall.util.Page;
 import com.how2java.tmall.util.UploadedImageFile;
 
 /**
- * 
  * @Name: CategoryController
- * @Description: TODO(分类页面的控制器)
+ * @Description: 分类页面的控制器
  * @Author Jet Yu
  * @Date 2020-04-13
  */
@@ -48,19 +47,6 @@ public class CategoryController {
      */
     private Logger logger = LoggerFactory.getLogger(CategoryController.class);
 
-    @RequestMapping("admin_category_list")
-    public String listCategory(Model model, Page page) {
-        logger.info("CategoryController : 调用listCategory方法");
-        // PageHelper.offsetPage(page.getStart(), page.getCount());
-        PageHelper.offsetPage(page.getStart(), 10);
-        List<Category> categoryList = categoryService.list();
-        int total = (int)new PageInfo<>(categoryList).getTotal();
-        page.setTotal(total);
-        model.addAttribute("categoryList", categoryList);
-        model.addAttribute("page", page);
-        return "admin/listCategory";
-    }
-
     /**
      * @Title: listCategory
      * @Author Jet Yu
@@ -71,31 +57,37 @@ public class CategoryController {
      * @param page
      * @return
      */
-    // // @RequestMapping("admin_category_list")
-    // public String listCategory(Category category, Model model, HttpSession session, Page page, UploadedImageFile
-    // uploadedImageFile) {
-    // logger.info("CategoryController : 调用listAllCategory方法");
-    // // 返回categoryList集合
-    // List<Category> categoryList = categoryService.listCategory(page);
-    // // 定义total 返回分页的时候整个数量的方法
-    // int total = categoryService.total();
-    // page.setTotal(total);
-    // model.addAttribute("categoryList", categoryList);
-    // model.addAttribute("page", page);
-    // // 获取图片文件夹路径，通过session获取ServletContext,再通过getRealPath定位存放分类图片的路径。
-    // File imageFoldPath = new File(session.getServletContext().getRealPath("img/category"));
-    // // 删除macOS系统上DS_Store文件 防止统计出错
-    // File dsStoreFile = new File(imageFoldPath, ".DS_Store");
-    // dsStoreFile.delete();
-    // // 把文件夹路径转换为字符串类型
-    // String imageFoldPathToString = imageFoldPath.toString();
-    // // 获取分类图片路径下，图片文件的数量
-    // uploadedImageFile.getFileCount(imageFoldPathToString);
-    // // 获取分类图片，遍历图片文件路径信息
-    // uploadedImageFile.getFileList(imageFoldPathToString);
-    // // 客户端跳转到admin_category_list
-    // return "admin/listCategory";
-    // }
+    @RequestMapping("admin_category_list")
+    public String listCategory(Category category, Model model, HttpSession session, Page page, UploadedImageFile uploadedImageFile) {
+        logger.info("CategoryController : 调用listCategory方法");
+        // PageHelper.offsetPage(page.getStart(), page.getCount());
+        PageHelper.offsetPage(page.getStart(), 10);
+        // 返回categoryList集合
+        List<Category> categoryList = categoryService.listCategory();
+        // 定义total 返回分页的时候整个数量的方法
+        int total = (int)new PageInfo<>(categoryList).getTotal();
+        page.setTotal(total);
+        // 配置参数的时候，就实例化了，springMVC的功能，这个是往jsp上绑定元素，传值
+        model.addAttribute("categoryList", categoryList);
+        model.addAttribute("page", page);
+
+        try {
+            // 获取图片文件夹路径，通过session获取ServletContext,再通过getRealPath定位存放分类图片的路径。
+            File imageFoldPath = new File(session.getServletContext().getRealPath("img/category"));
+            // 删除macOS系统上DS_Store文件 防止统计出错
+            File dsStoreFile = new File(imageFoldPath, ".DS_Store");
+            dsStoreFile.delete();
+            // 把文件夹路径转换为字符串类型
+            String imageFoldPathToString = imageFoldPath.toString();
+            // 获取分类图片路径下，图片文件的数量
+            uploadedImageFile.getFileList(imageFoldPathToString);
+        } catch (Exception e) {
+            logger.error("List All Image File has occurred error!", e);
+        }
+
+        // 客户端跳转到admin_category_list
+        return "admin/listCategory";
+    }
 
     /**
      * 增加分类
@@ -159,13 +151,14 @@ public class CategoryController {
         logger.info("准备要删除的图片为：" + imageFile.toString());
         try {
             imageFile.delete();
+            // 把文件夹路径转换为字符串类型
+            String imageFoldPathToString = imageFoldPath.toString();
+            // 获取分类图片路径下，图片文件的数量
+            uploadedImageFile.getFileCount(imageFoldPathToString);
         } catch (Exception e) {
             logger.error("Delete image file has occurred error!", e);
         }
-        // 把文件夹路径转换为字符串类型
-        String imageFoldPathToString = imageFoldPath.toString();
-        // 获取分类图片路径下，图片文件的数量
-        uploadedImageFile.getFileCount(imageFoldPathToString);
+
         // redirect到admin_category_list
         return "redirect:/admin_category_list";
     }
