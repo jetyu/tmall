@@ -72,4 +72,18 @@ public class ProductImageServiceImpl implements ProductImageService {
         return productImageMapper.selectByExample(example);
     }
 
+    /**
+     * @Title: getProductImageById
+     * @Description: TODO(描述)
+     * @Author Jet Yu
+     * @Date 2020-04-17
+     * @param id
+     * @return
+     * @see com.how2java.tmall.service.ProductImageService#getProductImageById(int)
+     */
+    @Override
+    public ProductImage getProductImageById(int id) {
+        return productImageMapper.selectByPrimaryKey(id);
+    }
+
 }

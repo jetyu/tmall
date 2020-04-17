@@ -40,12 +40,12 @@ public class ProductController {
     @Autowired
     ProductService productService;
     @Autowired
-    CategoryService categorService;
+    CategoryService categoryService;
 
     @RequestMapping("admin_product_list")
     public String listProduct(int cid, Model model, Page page) {
         logger.info("调用product LIST方法");
-        Category c = categorService.getCategoryById(cid);
+        Category c = categoryService.getCategoryById(cid);
         List<Product> ps = productService.listProduct(cid);
         // 调入pagehelper插件
         PageHelper.offsetPage(page.getStart(), 10);
@@ -73,7 +73,7 @@ public class ProductController {
     @RequestMapping("admin_product_edit")
     public String editProduct(int id, Model model) {
         Product p = productService.getProductById(id);
-        Category c = categorService.getCategoryById(p.getCid());
+        Category c = categoryService.getCategoryById(p.getCid());
         model.addAttribute("p", p);
         model.addAttribute("c", c);
         return "admin/editProduct";

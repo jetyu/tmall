@@ -8,6 +8,22 @@ public class PropertyValue {
     private Integer ptid;
 
     private String value;
+    private Property property;
+
+    /**
+     * @return the property
+     */
+    public Property getProperty() {
+        return property;
+    }
+
+    /**
+     * @param property
+     *            the property to set
+     */
+    public void setProperty(Property property) {
+        this.property = property;
+    }
 
     public Integer getId() {
         return id;

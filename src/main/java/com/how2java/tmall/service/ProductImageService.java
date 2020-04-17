@@ -26,4 +26,6 @@ public interface ProductImageService {
     void insertProductImage(ProductImage pi);
 
     List<ProductImage> listProductImage(int pid, String type);
+
+    ProductImage getProductImageById(int id);
 }
