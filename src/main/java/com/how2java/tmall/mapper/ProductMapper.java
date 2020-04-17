@@ -1,13 +1,12 @@
 package com.how2java.tmall.mapper;
 
+import java.util.List;
+
 import com.how2java.tmall.pojo.Product;
 import com.how2java.tmall.pojo.ProductExample;
-import java.util.List;
 
 public interface ProductMapper {
     int deleteByPrimaryKey(Integer id);
-
-    int insert(Product record);
 
     int insertSelective(Product record);
 

@@ -16,7 +16,6 @@ import com.how2java.tmall.pojo.Category;
  * @Author Jet Yu
  * @Date 2020-04-13
  */
-
 public interface CategoryService {
 
     /**

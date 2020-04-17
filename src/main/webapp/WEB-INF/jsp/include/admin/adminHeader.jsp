@@ -60,10 +60,10 @@ $(function(){
 		console.log(deleteLink);
 		if("true"==deleteLink){
 			var confirmDelete = confirm("确认要删除");
-			if(confirmDelete)
+			if(confirmDelete){
 				return true;
-			return false;
-			
+				}
+			return "请删除相关属性";
 		}
 	});
 })
