@@ -17,10 +17,12 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
+import com.how2java.tmall.exeception.CustomException;
 import com.how2java.tmall.pojo.Category;
 import com.how2java.tmall.service.CategoryService;
 import com.how2java.tmall.util.Page;
@@ -33,6 +35,7 @@ import com.how2java.tmall.util.UploadedImageFile;
  * @Date 2020-04-13
  */
 @Controller
+@ControllerAdvice
 @RequestMapping("")
 public class CategoryController {
 
@@ -141,7 +144,7 @@ public class CategoryController {
      * @return
      */
     @RequestMapping("admin_category_delete")
-    public String deleteOneCategory(int id, Model model, HttpSession session, UploadedImageFile uploadedImageFile) {
+    public String deleteOneCategory(int id, Model model, HttpSession session, UploadedImageFile uploadedImageFile) throws Exception {
         logger.info("CategoryController : 调用deleteOneCategory方法");
         categoryService.deleteCategory(id);
         // 获取图片文件夹路径，通过session获取ServletContext,再通过getRealPath定位存放分类图片的路径。
@@ -149,14 +152,14 @@ public class CategoryController {
         // 获取图片文件名
         File imageFile = new File(imageFoldPath, id + ".jpg");
         logger.info("准备要删除的图片为：" + imageFile.toString());
-        try {
-            imageFile.delete();
+
+        if (imageFile.delete() == true) {
             // 把文件夹路径转换为字符串类型
             String imageFoldPathToString = imageFoldPath.toString();
             // 获取分类图片路径下，图片文件的数量
             uploadedImageFile.getFileCount(imageFoldPathToString);
-        } catch (Exception e) {
-            logger.error("Delete image file has occurred error!", e);
+        } else {
+            throw new CustomException("操作失败，未删除相关数据，请检查!");
         }
 
         // redirect到admin_category_list

@@ -8,6 +8,7 @@ package com.how2java.tmall.service;
 
 import java.util.List;
 
+import com.how2java.tmall.exeception.CustomException;
 import com.how2java.tmall.pojo.Category;
 
 /**
@@ -45,8 +46,10 @@ public interface CategoryService {
      * @Author Jet Yu
      * @Date 2020-04-14
      * @param id
+     * @throws CustomException
+     * @throws Exception
      */
-    void deleteCategory(int id);
+    void deleteCategory(int id) throws CustomException;
 
     /**
      * 通过id获取1个category名称，用于编辑category名称
