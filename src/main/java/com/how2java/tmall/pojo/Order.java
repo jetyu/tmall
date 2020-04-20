@@ -1,8 +1,75 @@
 package com.how2java.tmall.pojo;
 
+import java.math.BigDecimal;
 import java.util.Date;
+import java.util.List;
 
 public class Order {
+    private List<OrderItem> orderItems;
+    private User user;
+    private BigDecimal totalPrice;
+    private int totalNumber;
+
+    /**
+     * @return the orderItems
+     */
+    public List<OrderItem> getOrderItems() {
+        return orderItems;
+    }
+
+    /**
+     * @param orderItems
+     *            the orderItems to set
+     */
+    public void setOrderItems(List<OrderItem> orderItems) {
+        this.orderItems = orderItems;
+    }
+
+    /**
+     * @return the user
+     */
+    public User getUser() {
+        return user;
+    }
+
+    /**
+     * @param user
+     *            the user to set
+     */
+    public void setUser(User user) {
+        this.user = user;
+    }
+
+    /**
+     * @return the totalPrice
+     */
+    public BigDecimal getTotalPrice() {
+        return totalPrice;
+    }
+
+    /**
+     * @param totalPrice
+     *            the totalPrice to set
+     */
+    public void setTotalPrice(BigDecimal totalPrice) {
+        this.totalPrice = totalPrice;
+    }
+
+    /**
+     * @return the totalNumber
+     */
+    public int getTotalNumber() {
+        return totalNumber;
+    }
+
+    /**
+     * @param totalNumber
+     *            the totalNumber to set
+     */
+    public void setTotalNumber(int totalNumber) {
+        this.totalNumber = totalNumber;
+    }
+
     private Integer id;
 
     private String orderCode;
@@ -132,4 +199,5 @@ public class Order {
     public void setStatus(String status) {
         this.status = status == null ? null : status.trim();
     }
+
 }

@@ -10,6 +10,23 @@ public class OrderItem {
     private Integer uid;
 
     private Integer number;
+    /*非数据库字段*/
+    private Product product;
+
+    /**
+     * @return the product
+     */
+    public Product getProduct() {
+        return product;
+    }
+
+    /**
+     * @param product
+     *            the product to set
+     */
+    public void setProduct(Product product) {
+        this.product = product;
+    }
 
     public Integer getId() {
         return id;

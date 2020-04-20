@@ -1,5 +1,6 @@
 package com.how2java.tmall.pojo;
 
+import java.math.BigDecimal;
 import java.util.Date;
 
 public class Product {
@@ -9,9 +10,9 @@ public class Product {
 
     private String subTitle;
 
-    private Float originalPrice;
+    private BigDecimal originalPrice;
 
-    private Float promotePrice;
+    private BigDecimal promotePrice;
 
     private Integer stock;
 
@@ -53,19 +54,19 @@ public class Product {
         this.subTitle = subTitle == null ? null : subTitle.trim();
     }
 
-    public Float getOriginalPrice() {
+    public BigDecimal getOriginalPrice() {
         return originalPrice;
     }
 
-    public void setOriginalPrice(Float originalPrice) {
+    public void setOriginalPrice(BigDecimal originalPrice) {
         this.originalPrice = originalPrice;
     }
 
-    public Float getPromotePrice() {
+    public BigDecimal getPromotePrice() {
         return promotePrice;
     }
 
-    public void setPromotePrice(Float promotePrice) {
+    public void setPromotePrice(BigDecimal promotePrice) {
         this.promotePrice = promotePrice;
     }
 
