@@ -22,7 +22,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
-import com.how2java.tmall.exeception.CustomException;
 import com.how2java.tmall.pojo.Category;
 import com.how2java.tmall.service.CategoryService;
 import com.how2java.tmall.util.Page;
@@ -48,7 +47,7 @@ public class CategoryController {
     /**
      * 定义logger
      */
-    private Logger logger = LoggerFactory.getLogger(CategoryController.class);
+    private final static Logger logger = LoggerFactory.getLogger(CategoryController.class);
 
     /**
      * @Title: listCategory
@@ -142,6 +141,7 @@ public class CategoryController {
      * @param session
      * @param uploadedImageFile
      * @return
+     * @throws Exception
      */
     @RequestMapping("admin_category_delete")
     public String deleteOneCategory(int id, Model model, HttpSession session, UploadedImageFile uploadedImageFile) throws Exception {
@@ -158,8 +158,6 @@ public class CategoryController {
             String imageFoldPathToString = imageFoldPath.toString();
             // 获取分类图片路径下，图片文件的数量
             uploadedImageFile.getFileCount(imageFoldPathToString);
-        } else {
-            throw new CustomException("操作失败，未删除相关数据，请检查!");
         }
 
         // redirect到admin_category_list

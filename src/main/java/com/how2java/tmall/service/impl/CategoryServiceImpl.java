@@ -11,7 +11,6 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.how2java.tmall.exeception.CustomException;
 import com.how2java.tmall.mapper.CategoryMapper;
 import com.how2java.tmall.pojo.Category;
 import com.how2java.tmall.pojo.CategoryExample;
@@ -68,7 +67,7 @@ public class CategoryServiceImpl implements CategoryService {
      * @see com.how2java.tmall.service.CategoryService#deleteCategory(int)
      */
     @Override
-    public void deleteCategory(int id) throws CustomException {
+    public void deleteCategory(int id) {
         categoryMapper.deleteByPrimaryKey(id);
 
     }
