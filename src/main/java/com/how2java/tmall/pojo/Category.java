@@ -20,4 +20,18 @@ public class Category {
     public void setName(String name) {
         this.name = name == null ? null : name.trim();
     }
+
+    /**
+     * @Title: toString
+     * @Description: TODO(描述)
+     * @Author Jet Yu
+     * @Date 2020-04-25
+     * @return
+     * @see java.lang.Object#toString()
+     */
+    @Override
+    public String toString() {
+        return "Category [id=" + id + ", name=" + name + "]";
+    }
+
 }

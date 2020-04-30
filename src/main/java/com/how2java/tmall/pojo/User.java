@@ -7,6 +7,19 @@ public class User {
 
     private String password;
 
+    /**
+     * @Title: toString
+     * @Description: TODO(描述)
+     * @Author Jet Yu
+     * @Date 2020-04-25
+     * @return
+     * @see java.lang.Object#toString()
+     */
+    @Override
+    public String toString() {
+        return "User [id=" + id + ", name=" + name + ", password=" + password + "]";
+    }
+
     public Integer getId() {
         return id;
     }
@@ -30,4 +43,5 @@ public class User {
     public void setPassword(String password) {
         this.password = password == null ? null : password.trim();
     }
+
 }
